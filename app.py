@@ -3,18 +3,18 @@ import flask_cors as CORS
 import sqlite3 as sql
 from sqlite3 import Error
 
-app = Flask(__name__)
+mysite = Flask(__name__)
 # CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
-app.config['FLASK_ENV'] = 'development'
-app.config['DEBUG'] = True
-app.config['FLASK_APP'] = 'app.py'
+mysite.config['CORS_HEADERS'] = 'Content-Type'
+mysite.config['FLASK_ENV'] = 'development'
+mysite.config['DEBUG'] = True
+mysite.config['FLASK_APP'] = 'app.py'
 
-@app.route('/')
+@mysite.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
-@app.route('/contact', methods=['POST'])
+@mysite.route('/contact', methods=['POST'])
 def contact():
 
     if request.method == 'POST':
@@ -38,4 +38,4 @@ def contact():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
-    app.run()
+    mysite.run()
