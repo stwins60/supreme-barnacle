@@ -24,5 +24,3 @@ def sendMyEmail(sender, recipient, subject, content):
     
     return "Email wasn't sent"
 
-# password = os.environ.get('SENDGRID_API_KEY')
-# print(password)
