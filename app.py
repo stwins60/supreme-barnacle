@@ -1,11 +1,10 @@
 from flask import Flask, render_template, request, url_for, redirect
-import flask_cors as CORS
 import sqlite3 as sql
 from sqlite3 import Error
 import mailer
 
 mysite = Flask(__name__)
-# CORS(app)
+
 mysite.config['CORS_HEADERS'] = 'Content-Type'
 mysite.config['FLASK_ENV'] = 'development'
 mysite.config['DEBUG'] = True
