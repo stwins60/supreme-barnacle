@@ -3,16 +3,20 @@ from sendgrid.helpers.mail import Mail
 import os
 
 sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-def sendMyEmail(sender, recipient, subject, content):
+def sendMyEmail(sender, recipient, subject, fname, lname, email, content):
     """
     Takes in email details to send an email to whoever.
     """
+    message = f"""Message from {fname} {lname}: \n\n{content} \n\n
+    Email: {email}
+    """
+
     # Sendgrid client
     email = Mail(
         from_email=sender,
         to_emails=recipient,
         subject=subject,
-        html_content=content
+        html_content=message
     )
     
     # Sending the email 

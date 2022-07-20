@@ -19,8 +19,9 @@ def index():
 def contact():
 
     if request.method == 'POST':
-        # email = request.form['email']
-        # subject = request.form['subject']
+        fname = request.form['fname']
+        lname = request.form['lname']
+        email = request.form['email']
         message = request.form['content']
 
         if message == '':
@@ -32,7 +33,7 @@ def contact():
                 # c.execute("INSERT INTO messages (email, subject, message) VALUES (?, ?, ?)", (email, subject, message))
                 # conn.commit()
                 subject = 'Message from MySite'
-                mailer.sendMyEmail('idrisniyi94@gmail.com', 'idrisniyi94@gmail.com', subject, message) 
+                mailer.sendMyEmail('idrisniyi94@gmail.com', 'idrisniyi94@gmail.com', subject, fname, lname, email, message) 
                 return render_template('index.html', success='Your message has been sent')
             except Error as e:
                 print(e)
