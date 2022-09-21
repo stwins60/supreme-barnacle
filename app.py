@@ -27,13 +27,16 @@ def contact():
             return render_template('index.html', error='Please fill in all fields')
         else:
             try:
+                email_domain = ['com', 'org', 'net', 'edu']
+                split_email = email.split('.')[-1]
+                if split_email in email_domain:
                 # conn = sql.connect('message_box.db')
                 # c = conn.cursor()
                 # c.execute("INSERT INTO messages (email, subject, message) VALUES (?, ?, ?)", (email, subject, message))
                 # conn.commit()
-                subject = 'Message from MySite'
-                mailer.sendMyEmail('idrisniyi94@gmail.com', 'idrisniyi94@gmail.com', subject, fname, lname, email, message) 
-                return render_template('index.html', success='Your message has been sent')
+                    subject = 'Message from MySite'
+                    mailer.sendMyEmail('idrisniyi94@gmail.com', 'idrisniyi94@gmail.com', subject, fname, lname, email, message) 
+                    return render_template('index.html', success='Your message has been sent')
             except Error as e:
                 print(e)
                 return render_template('index.html', error='Something went wrong')
