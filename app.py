@@ -29,6 +29,7 @@ def contact():
             try:
                 email_domain = ['com', 'org', 'net', 'edu']
                 split_email = email.split('.')[-1]
+                print(split_email)
                 if split_email in email_domain:
                 # conn = sql.connect('message_box.db')
                 # c = conn.cursor()
@@ -37,6 +38,8 @@ def contact():
                     subject = 'Message from MySite'
                     mailer.sendMyEmail('idrisniyi94@gmail.com', 'idrisniyi94@gmail.com', subject, fname, lname, email, message) 
                     return render_template('index.html', success='Your message has been sent')
+                else:
+                    return render_template('index.html', error='Please enter a valid email')
             except Error as e:
                 print(e)
                 return render_template('index.html', error='Something went wrong')
